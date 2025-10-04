@@ -1,5 +1,8 @@
-import json, logging, sys
+import json, logging, sys, os
 from datetime import datetime
+from contextvars import ContextVar
+
+request_id_var: ContextVar[str] = ContextVar('request_id', default='')
 
 class JsonFormatter(logging.Formatter):
     def format(self, record):
@@ -9,6 +12,9 @@ class JsonFormatter(logging.Formatter):
             "message": record.getMessage(),
             "logger": record.name,
         }
+        request_id = request_id_var.get()
+        if request_id:
+            data["request_id"] = request_id
         if record.exc_info:
             data["exc_info"] = self.formatException(record.exc_info)
         return json.dumps(data)
@@ -19,5 +25,6 @@ def get_logger(name: str) -> logging.Logger:
         handler = logging.StreamHandler(sys.stdout)
         handler.setFormatter(JsonFormatter())
         logger.addHandler(handler)
-        logger.setLevel(logging.INFO)
+        log_level = os.getenv("LOG_LEVEL", "INFO").upper()
+        logger.setLevel(getattr(logging, log_level, logging.INFO))
     return logger
