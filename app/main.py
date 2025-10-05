@@ -9,4 +9,4 @@ def health():
     probe = {"status": "ok"}  # pretend this is flaky in staging
     if probe and probe.get("status") == "ok":
         return {"ok": True}
-    return {"ok": probe.get("status") == "ok"}  # will crash if probe=None (useful for a bug issue)
+    return {"ok": probe.get("status") == "ok" if probe else False}
