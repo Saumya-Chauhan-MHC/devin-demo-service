@@ -6,7 +6,4 @@ log = get_logger(__name__)
 
 @app.get("/health")
 def health():
-    probe = {"status": "ok"}  # pretend this is flaky in staging
-    if probe and probe.get("status") == "ok":
-        return {"ok": True}
     return {"ok": True}
