@@ -21,14 +21,14 @@ The service simulates a basic **FastAPI-like** backend with three key components
 | `app/metrics.py`        | Placeholder Prometheus metrics endpoint stub.                                               |
 | `app/logging_config.py` | Simple JSON logger setup used to demonstrate enhancements like `request_id` propagation.    |
 
-Together, these files provide realistic but simple "issues" for Devin to analyze — just enough for meaningful scoping and PR creation.
+Together, these files provide realistic but simple "issues" for Devin to analyze, just enough for meaningful scoping and PR creation.
 
 ---
 
 ## How It’s Used in the CLI Demo
 
 This repo is the `DEFAULT_REPO` target for the **Devin Issues CLI**.
-You’ll see it referenced in `.env` as:
+You’ll see it referenced in our demo's `.env` as:
 
 ```bash
 DEFAULT_REPO=Saumya-Chauhan-MHC/devin-demo-service
@@ -52,14 +52,19 @@ These mimic a real-world engineering backlog — perfect for demonstrating Devin
 
 ---
 
-## 🔍 Example Workflow
+## End-to-End Demo Reference
 
-| Step           | Command                                                                    | What Happens                                                          |
-| -------------- | -------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| List issues | `devin-cli issues list --repo Saumya-Chauhan-MHC/devin-demo-service`       | Lists all open issues from GitHub                                     |
-| Scope issue | `devin-cli issues scope -n 1 --repo Saumya-Chauhan-MHC/devin-demo-service` | Starts a Devin session to analyze the issue                           |
-| Confidence  | *(auto)*                                                                   | Devin prints a scoping plan and native confidence (🟢 🟡 🔴)          |
-| Create PR    | Press `y` when prompted                                                    | Devin creates a branch and opens a PR in this repo via its GitHub App |
+This repository pairs directly with the **[Devin Issues CLI Demo](https://www.loom.com/share/83ca12c2be174387a53ad76f60e5d7b3?sid=b20a888e-99e7-4311-8ad1-2d2efad2f20a)**,
+which shows the full workflow from **issue listing → scoping → confidence → PR creation**.
+
+If you’re viewing this repo in isolation, check out the CLI demo video or follow these commands:
+
+| Step           | Command                                                                    | Description                                                         |
+| -------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| List issues | `devin-cli issues list --repo Saumya-Chauhan-MHC/devin-demo-service`       | Lists open GitHub issues                                            |
+| Scope issue | `devin-cli issues scope -n 1 --repo Saumya-Chauhan-MHC/devin-demo-service` | Starts a Devin session to analyze the issue                         |
+| Confidence  | *(auto)*                                                                   | Devin prints the full scoping plan and native confidence (🟢 🟡 🔴) |
+| Create PR    | Press `y` when prompted                                                    | Devin creates a branch and opens a PR through its GitHub App        |
 
 Example CLI output:
 
@@ -70,7 +75,7 @@ Requested: Handle probe=None safely
 Tests: probe=None, probe={'status':'fail'}
 Confidence: High 🟢 — straightforward fix
 
-PR Created
+✅ PR Created
 https://github.com/Saumya-Chauhan-MHC/devin-demo-service/pull/9
 ```
 
@@ -111,7 +116,3 @@ https://github.com/Saumya-Chauhan-MHC/devin-demo-service/pull/9
 
 MIT License © 2025 Saumya Chauhan
 Use this repository freely for demos, educational purposes, or local Devin CLI testing.
-
----
-
-Would you like me to include a **“Quick Reset” section** too (e.g., for deleting branches/PRs after a demo so it’s clean before the next run)? That’s often helpful for presentations.
