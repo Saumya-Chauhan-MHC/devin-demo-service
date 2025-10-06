@@ -57,28 +57,6 @@ These mimic a real-world engineering backlog — perfect for demonstrating Devin
 This repository pairs directly with the **[Devin Issues CLI Demo](https://www.loom.com/share/83ca12c2be174387a53ad76f60e5d7b3?sid=b20a888e-99e7-4311-8ad1-2d2efad2f20a)**,
 which shows the full workflow from **issue listing → scoping → confidence → PR creation**.
 
-If you’re viewing this repo in isolation, check out the CLI demo video or follow these commands:
-
-| Step           | Command                                                                    | Description                                                         |
-| -------------- | -------------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| List issues | `devin-cli issues list --repo Saumya-Chauhan-MHC/devin-demo-service`       | Lists open GitHub issues                                            |
-| Scope issue | `devin-cli issues scope -n 1 --repo Saumya-Chauhan-MHC/devin-demo-service` | Starts a Devin session to analyze the issue                         |
-| Confidence  | *(auto)*                                                                   | Devin prints the full scoping plan and native confidence (🟢 🟡 🔴) |
-| Create PR    | Press `y` when prompted                                                    | Devin creates a branch and opens a PR through its GitHub App        |
-
-Example CLI output:
-
-```
-Devin’s scoping
-Current: /health returns 500 due to NoneType in probe
-Requested: Handle probe=None safely
-Tests: probe=None, probe={'status':'fail'}
-Confidence: High 🟢 — straightforward fix
-
-✅ PR Created
-https://github.com/Saumya-Chauhan-MHC/devin-demo-service/pull/9
-```
-
 ---
 
 ## Repo Setup (for Testing Locally)
